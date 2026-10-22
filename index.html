@@ -20,6 +20,12 @@ body{margin:0;-webkit-text-size-adjust:100%}
 img{max-width:100%}
 [hidden]{display:none!important}
 </style>
+<script>
+// Sempre abre no topo: ignora a rolagem guardada e o #atalho que sobra no endereço ao recarregar.
+try{if('scrollRestoration' in history)history.scrollRestoration='manual'}catch(e){}
+if(location.hash){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}}
+window.scrollTo(0,0);window.addEventListener('load',function(){window.scrollTo(0,0)});
+</script>
 </head>
 <body>
 <style>
