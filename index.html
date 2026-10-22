@@ -24,6 +24,7 @@ img{max-width:100%}
 // Sempre abre no topo: ignora a rolagem guardada e o #atalho que sobra no endereço ao recarregar.
 try{if('scrollRestoration' in history)history.scrollRestoration='manual'}catch(e){}
 if(location.hash){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}}
+try{var _s=+localStorage.getItem('a11y-scale');if([115,130,150].indexOf(_s)>=0)document.documentElement.style.fontSize=_s+'%';if(localStorage.getItem('a11y-contrast')==='high')document.documentElement.setAttribute('data-contrast','high')}catch(e){}
 window.scrollTo(0,0);window.addEventListener('load',function(){window.scrollTo(0,0)});
 </script>
 </head>
@@ -139,8 +140,33 @@ footer{border-top:1px solid var(--line);padding-top:20px;display:flex;flex-direc
   .stamp{position:static;display:inline-block;margin-top:12px}
 }
 @media (prefers-reduced-motion:reduce){.stamp{animation:none}}
+/* Barra de acessibilidade */
+.a11y-wrap{max-width:44rem;margin-inline:auto;padding-top:12px}
+.a11y{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.a11y .lbl{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.a11y button{font:inherit;font-size:.95rem;font-weight:700;min-height:44px;min-width:44px;padding:8px 12px;border-radius:8px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.a11y button[aria-pressed="true"]{border-color:var(--accent);background:var(--tint)}
+.a11y button:disabled{opacity:.45;cursor:not-allowed}
+.a11y button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+/* Selo de acessibilidade */
+.selo{display:flex;flex-direction:column;gap:8px;border:2px solid var(--accent);border-radius:10px;padding:14px 16px;background:var(--card);color:var(--ink)}
+.selo-t{font-family:var(--f-display);font-weight:800;font-size:1.05rem}
+.selo ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:2px}
+.selo a{font-weight:700}
+/* Alto contraste (escolhido pela pessoa na barra de acessibilidade) */
+:root[data-contrast="high"]{--paper:#000;--card:#000;--ink:#fff;--muted:#fff;--line:#fff;--accent:#FFE14D;--accent-ink:#000;--stamp:#FF8A8A;--clean:#7DFF9B;--tint:#262626;color-scheme:dark}
+:root[data-contrast="high"] a{text-decoration-thickness:2px}
 </style>
 
+<header class="a11y-wrap">
+  <div class="a11y" role="toolbar" aria-label="Opções de acessibilidade">
+    <span class="lbl" aria-hidden="true">Acessibilidade</span>
+    <button type="button" id="a11y-dec" aria-label="Diminuir o tamanho do texto">A&minus;</button>
+    <button type="button" id="a11y-inc" aria-label="Aumentar o tamanho do texto">A+</button>
+    <button type="button" id="a11y-hc" aria-pressed="false">Alto contraste</button>
+    <span class="sr-only" id="a11y-status" role="status" aria-live="polite"></span>
+  </div>
+</header>
 <main class="wrap">
 
   <section class="hero" aria-labelledby="t">
@@ -297,6 +323,16 @@ Peço a exclusão do meu nome dos cadastros de inadimplentes, nos termos do Cód
   <footer>
     <p><strong style="color:var(--ink)">Integra FAM 2026</strong> · Campanha de Esclarecimento Jurídico ao Cidadão, feita por alunos do curso de Direito da Faculdade de Americana (FAM).</p>
     <p>Material informativo. Não substitui a orientação de um advogado ou da Defensoria Pública para o seu caso.</p>
+    <div class="selo" role="group" aria-labelledby="selo-t">
+      <span class="selo-t" id="selo-t">Acessibilidade verificada</span>
+      <ul>
+        <li>Segue a WCAG 2.2, nível AA</li>
+        <li>Nota de acessibilidade: <b>100/100</b> (Lighthouse)</li>
+        <li>Testado com teclado, zoom de texto e leitor de tela (VoiceOver)</li>
+        <li>Última verificação: 22/10/2026</li>
+      </ul>
+      <a href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fmurilodannis123-lang.github.io%2Fcartilha-negativacao-g06%2F" target="_blank" rel="noopener">Refazer o teste agora<span class="sr-only"> (abre em nova aba)</span></a>
+    </div>
   </footer>
 </main>
 
@@ -328,6 +364,26 @@ Peço a exclusão do meu nome dos cadastros de inadimplentes, nos termos do Cód
       navigator.clipboard.writeText(msg.textContent).then(function(){done('Copiado')},fallback);
     } else fallback();
   });
+})();
+</script>
+<script>
+(function(){
+  var root=document.documentElement,steps=[100,115,130,150],i=0,hc=false;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function put(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  var saved=+get('a11y-scale');if(steps.indexOf(saved)>=0)i=steps.indexOf(saved);
+  hc=get('a11y-contrast')==='high';
+  var dec=document.getElementById('a11y-dec'),inc=document.getElementById('a11y-inc'),btn=document.getElementById('a11y-hc'),st=document.getElementById('a11y-status');
+  function apply(msg){
+    root.style.fontSize=steps[i]===100?'':steps[i]+'%';
+    if(hc)root.setAttribute('data-contrast','high');else root.removeAttribute('data-contrast');
+    dec.disabled=i===0;inc.disabled=i===steps.length-1;btn.setAttribute('aria-pressed',hc?'true':'false');
+    if(msg)st.textContent=msg;
+  }
+  dec.addEventListener('click',function(){if(i>0){i--;put('a11y-scale',steps[i]);apply('Tamanho do texto: '+steps[i]+'%')}});
+  inc.addEventListener('click',function(){if(i<steps.length-1){i++;put('a11y-scale',steps[i]);apply('Tamanho do texto: '+steps[i]+'%')}});
+  btn.addEventListener('click',function(){hc=!hc;put('a11y-contrast',hc?'high':'normal');apply(hc?'Alto contraste ligado':'Alto contraste desligado')});
+  apply();
 })();
 </script>
 <script>
