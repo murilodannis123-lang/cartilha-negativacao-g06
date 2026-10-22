@@ -39,6 +39,7 @@ img{max-width:100%}
   --accent:#93A3FF; --accent-ink:#0E131A; --stamp:#FF6D7C; --clean:#52C892; --tint:#1C2540; color-scheme:dark}
 
 *{box-sizing:border-box}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 [hidden]{display:none!important}
 body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:1.0625rem;line-height:1.6;padding-inline:16px;padding-block:0 48px}
 .wrap{max-width:44rem;margin-inline:auto;display:flex;flex-direction:column;gap:56px}
@@ -55,12 +56,12 @@ section{display:flex;flex-direction:column;gap:18px}
 
 /* Hero */
 .hero{padding-top:28px;gap:22px}
-.slip{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:18px 18px 20px;position:relative;overflow:hidden;
+.slip{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:18px 18px 20px;position:relative;overflow:visible;
   background-image:repeating-linear-gradient(0deg,transparent 0 31px,var(--line) 31px 32px);background-position:0 46px}
 .slip-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--f-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-bottom:12px;border-bottom:1px dashed var(--line);background:var(--card)}
 .rows{display:grid;grid-template-columns:auto 1fr;column-gap:16px;font-family:var(--f-mono);font-size:.9rem;line-height:32px;margin-top:6px}
 .rows dt{color:var(--muted)} .rows dd{margin:0;font-variant-numeric:tabular-nums;min-width:0}
-.stamp{position:absolute;right:14px;bottom:18px;transform:rotate(-9deg);border:4px solid var(--stamp);color:var(--stamp);font-family:var(--f-display);font-weight:900;font-stretch:125%;font-size:clamp(1.1rem,5vw,1.6rem);letter-spacing:.06em;padding:4px 12px;border-radius:6px;background:color-mix(in srgb,var(--card) 70%,transparent);animation:land .5s cubic-bezier(.2,1.6,.4,1) .2s both}
+.stamp{position:absolute;right:14px;bottom:18px;transform:rotate(-9deg);border:4px solid var(--stamp);color:var(--stamp);font-family:var(--f-display);font-weight:900;font-stretch:125%;font-size:min(clamp(1.1rem,5vw,1.6rem),9vw);letter-spacing:.06em;padding:4px 12px;max-width:100%;border-radius:6px;background:color-mix(in srgb,var(--card) 70%,transparent);animation:land .5s cubic-bezier(.2,1.6,.4,1) .2s both}
 @keyframes land{from{transform:rotate(-9deg) scale(1.35)}to{transform:rotate(-9deg) scale(1)}}
 .hero h1{font-size:clamp(2.5rem,10vw,4.2rem);font-weight:900;font-stretch:118%;letter-spacing:-.02em}
 .hero h1 em{font-style:normal;color:var(--stamp)}
@@ -169,7 +170,7 @@ footer{border-top:1px solid var(--line);padding-top:20px;display:flex;flex-direc
       <button class="case-btn" role="tab" id="tab-d" aria-controls="p-d" aria-selected="false"><b>Cobrança abusiva</b><span>Ameaças, ligações sem parar, exposição</span></button>
     </div>
 
-    <div class="panel" role="tabpanel" id="p-a" aria-labelledby="tab-a">
+    <div class="panel" role="tabpanel" tabindex="0" id="p-a" aria-labelledby="tab-a">
       <h3>Pode ser erro da empresa ou fraude com os seus dados</h3>
       <ul>
         <li><div>Consulte de graça quem negativou, o valor e a data. Você tem direito de ver tudo o que está registrado sobre você e de onde veio a informação.<span class="ref">CDC, art. 43, caput</span></div></li>
@@ -180,7 +181,7 @@ footer{border-top:1px solid var(--line);padding-top:20px;display:flex;flex-direc
       </ul>
     </div>
 
-    <div class="panel" role="tabpanel" id="p-b" aria-labelledby="tab-b" hidden>
+    <div class="panel" role="tabpanel" tabindex="0" id="p-b" aria-labelledby="tab-b" hidden>
       <h3>Pagou tudo? O credor tem prazo para limpar seu nome</h3>
       <ul>
         <li class="ok"><div>Depois do pagamento integral, cabe ao credor pedir a retirada do seu nome em até 5 dias úteis.<span class="ref">Súmula 548 do STJ</span></div></li>
@@ -190,7 +191,7 @@ footer{border-top:1px solid var(--line);padding-top:20px;display:flex;flex-direc
       </ul>
     </div>
 
-    <div class="panel" role="tabpanel" id="p-c" aria-labelledby="tab-c" hidden>
+    <div class="panel" role="tabpanel" tabindex="0" id="p-c" aria-labelledby="tab-c" hidden>
       <h3>O tempo também protege o consumidor</h3>
       <ul>
         <li class="ok"><div>Nenhuma negativação pode ficar no cadastro por mais de 5 anos.<span class="ref">CDC, art. 43, § 1º · Súmula 323 do STJ</span></div></li>
@@ -201,7 +202,7 @@ footer{border-top:1px solid var(--line);padding-top:20px;display:flex;flex-direc
       </ul>
     </div>
 
-    <div class="panel" role="tabpanel" id="p-d" aria-labelledby="tab-d" hidden>
+    <div class="panel" role="tabpanel" tabindex="0" id="p-d" aria-labelledby="tab-d" hidden>
       <h3>Dever não tira a sua dignidade</h3>
       <ul>
         <li><div>Na cobrança, o consumidor não pode ser exposto ao ridículo, constrangido ou ameaçado.<span class="ref">CDC, art. 42, caput</span></div></li>
@@ -228,10 +229,10 @@ footer{border-top:1px solid var(--line);padding-top:20px;display:flex;flex-direc
     <p class="eyebrow">Passo a passo</p>
     <h2 id="rota-t">Onde reclamar, nesta ordem</h2>
     <ol class="route">
-      <li><div class="body"><h3>Consulte seu CPF de graça</h3><p>Nos sites ou apps da <a href="https://www.serasa.com.br" target="_blank" rel="noopener">Serasa</a>, do <a href="https://www.spcbrasil.org.br" target="_blank" rel="noopener">SPC Brasil</a> e da <a href="https://www.boavistaservicos.com.br" target="_blank" rel="noopener">Boa Vista</a>. Para dívidas com bancos, o <a href="https://registrato.bcb.gov.br" target="_blank" rel="noopener">Registrato</a>, do Banco Central, mostra empréstimos e financiamentos no seu nome.</p></div></li>
+      <li><div class="body"><h3>Consulte seu CPF de graça</h3><p>Nos sites ou apps da <a href="https://www.serasa.com.br" target="_blank" rel="noopener">Serasa<span class="sr-only"> (abre em nova aba)</span></a>, do <a href="https://www.spcbrasil.org.br" target="_blank" rel="noopener">SPC Brasil<span class="sr-only"> (abre em nova aba)</span></a> e da <a href="https://www.boavistaservicos.com.br" target="_blank" rel="noopener">Boa Vista<span class="sr-only"> (abre em nova aba)</span></a>. Para dívidas com bancos, o <a href="https://registrato.bcb.gov.br" target="_blank" rel="noopener">Registrato<span class="sr-only"> (abre em nova aba)</span></a>, do Banco Central, mostra empréstimos e financiamentos no seu nome.</p></div></li>
       <li><div class="body"><h3>Fale com a empresa</h3><p>Explique o problema, peça a correção e anote sempre o número de protocolo. Use o modelo de mensagem abaixo.</p></div></li>
-      <li><div class="body"><h3>Registre no consumidor.gov.br</h3><p>Plataforma pública e gratuita onde a empresa responde à sua reclamação. Acesse <a href="https://www.consumidor.gov.br" target="_blank" rel="noopener">consumidor.gov.br</a>.</p></div></li>
-      <li><div class="body"><h3>Procure o Procon</h3><p>O Procon da sua cidade ou o <a href="https://www.procon.sp.gov.br" target="_blank" rel="noopener">Procon-SP</a> pode intermediar o conflito.</p></div></li>
+      <li><div class="body"><h3>Registre no consumidor.gov.br</h3><p>Plataforma pública e gratuita onde a empresa responde à sua reclamação. Acesse <a href="https://www.consumidor.gov.br" target="_blank" rel="noopener">consumidor.gov.br<span class="sr-only"> (abre em nova aba)</span></a>.</p></div></li>
+      <li><div class="body"><h3>Procure o Procon</h3><p>O Procon da sua cidade ou o <a href="https://www.procon.sp.gov.br" target="_blank" rel="noopener">Procon-SP<span class="sr-only"> (abre em nova aba)</span></a> pode intermediar o conflito.</p></div></li>
       <li><div class="body"><h3>Entre no Juizado Especial Cível</h3><p>Não paga custas no primeiro grau. Em causas de até 20 salários mínimos, você pode ir sem advogado; acima disso, até 40 salários mínimos, precisa de advogado. A ação pode ser proposta na cidade onde você mora. Se não puder pagar advogado, procure a Defensoria Pública.</p><span class="ref">Lei 9.099/95, arts. 3º, I, 9º e 54 · CDC, art. 101, I</span></div></li>
     </ol>
   </section>
@@ -278,12 +279,12 @@ Peço a exclusão do meu nome dos cadastros de inadimplentes, nos termos do Cód
   <details>
     <summary>Base legal usada nesta cartilha</summary>
     <ul class="law">
-      <li><b>CDC (Lei 8.078/90)</b>: arts. 6º, VI e VIII; 42; 42-A; 43, caput e §§ 1º, 2º, 3º e 5º; 71; 101, I. <a href="https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm" target="_blank" rel="noopener">Texto no Planalto</a></li>
-      <li><b>Código Civil (Lei 10.406/02)</b>: arts. 191, 202, VI, e 206, § 5º, I. <a href="https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm" target="_blank" rel="noopener">Texto no Planalto</a></li>
-      <li><b>Lei 9.099/95 (Juizados Especiais)</b>: arts. 3º, I, 9º e 54. <a href="https://www.planalto.gov.br/ccivil_03/leis/l9099.htm" target="_blank" rel="noopener">Texto no Planalto</a></li>
+      <li><b>CDC (Lei 8.078/90)</b>: arts. 6º, VI e VIII; 42; 42-A; 43, caput e §§ 1º, 2º, 3º e 5º; 71; 101, I. <a href="https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm" target="_blank" rel="noopener">Texto no Planalto<span class="sr-only"> (abre em nova aba)</span></a></li>
+      <li><b>Código Civil (Lei 10.406/02)</b>: arts. 191, 202, VI, e 206, § 5º, I. <a href="https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm" target="_blank" rel="noopener">Texto no Planalto<span class="sr-only"> (abre em nova aba)</span></a></li>
+      <li><b>Lei 9.099/95 (Juizados Especiais)</b>: arts. 3º, I, 9º e 54. <a href="https://www.planalto.gov.br/ccivil_03/leis/l9099.htm" target="_blank" rel="noopener">Texto no Planalto<span class="sr-only"> (abre em nova aba)</span></a></li>
       <li><b>Súmulas do STJ</b>: 323, 359, 385, 404 e 548.</li>
-      <li><b>STJ</b>: REsp 2.095.414/SP, 4ª Turma, rel. Min. Antonio Carlos Ferreira, j. 11/06/2024 (prazo de 5 anos contado do dia seguinte ao vencimento). <a href="https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2024/08072024-Informativo-destaca-prazo-de-manutencao-de-dados-de-devedor-em-cadastro-de-inadimplentes.aspx" target="_blank" rel="noopener">Notícia do STJ</a></li>
-      <li><b>STJ</b>: REsp 2.088.100/SP, 3ª Turma, rel. Min. Nancy Andrighi, j. 17/10/2023. <a href="https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2024/30082024-Prescricao-da-divida-impede-cobranca--mas-nao-inclusao-do-devedor-em-plataforma-de-negociacao-de-debito.aspx" target="_blank" rel="noopener">Notícia do STJ de 30/08/2024</a></li>
+      <li><b>STJ</b>: REsp 2.095.414/SP, 4ª Turma, rel. Min. Antonio Carlos Ferreira, j. 11/06/2024 (prazo de 5 anos contado do dia seguinte ao vencimento). <a href="https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2024/08072024-Informativo-destaca-prazo-de-manutencao-de-dados-de-devedor-em-cadastro-de-inadimplentes.aspx" target="_blank" rel="noopener">Notícia do STJ<span class="sr-only"> (abre em nova aba)</span></a></li>
+      <li><b>STJ</b>: REsp 2.088.100/SP, 3ª Turma, rel. Min. Nancy Andrighi, j. 17/10/2023. <a href="https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2024/30082024-Prescricao-da-divida-impede-cobranca--mas-nao-inclusao-do-devedor-em-plataforma-de-negociacao-de-debito.aspx" target="_blank" rel="noopener">Notícia do STJ de 30/08/2024<span class="sr-only"> (abre em nova aba)</span></a></li>
     </ul>
   </details>
 
