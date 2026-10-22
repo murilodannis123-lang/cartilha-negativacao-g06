@@ -134,10 +134,20 @@ summary{cursor:pointer;font-family:var(--f-display);font-weight:700;font-stretch
 .law{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:.95rem}
 .law b{font-family:var(--f-mono);font-weight:500;font-size:.85rem}
 
-footer{border-top:1px solid var(--line);padding-top:20px;display:flex;flex-direction:column;gap:8px;font-size:.92rem;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding-top:20px;display:flex;flex-direction:column;gap:14px;font-size:.92rem;color:var(--muted)}
+footer h2{font-size:1rem;font-stretch:100%;color:var(--ink)}
+.foot-block{display:flex;flex-direction:column;gap:4px}
+.foot-block p{max-width:65ch}
+.help{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.place{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.place h3{font-size:1.05rem}
+.place p{overflow-wrap:anywhere}
+.place a{font-weight:700}
+.place .when{color:var(--muted);font-size:.92rem}
+.refs{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;font-size:.92rem;overflow-wrap:anywhere}
 
 @media (max-width:520px){
-  .cases,.duo{grid-template-columns:1fr}
+  .cases,.duo,.help{grid-template-columns:1fr}
   .five-grid{grid-template-columns:1fr}
   .stamp{position:static;display:inline-block;margin-top:12px}
 }
@@ -189,6 +199,7 @@ footer{border-top:1px solid var(--line);padding-top:20px;display:flex;flex-direc
       <a href="#caso">Qual é o seu caso</a>
       <a href="#cinco">Regra dos 5</a>
       <a href="#rota">Onde reclamar</a>
+      <a href="#ajuda">Ajuda em Americana</a>
       <a href="#dinheiro">Indenização</a>
       <a href="#modelo">Modelo de mensagem</a>
     </nav>
@@ -271,6 +282,18 @@ footer{border-top:1px solid var(--line);padding-top:20px;display:flex;flex-direc
     </ol>
   </section>
 
+  <section id="ajuda" aria-labelledby="ajuda-t">
+    <p class="eyebrow">Atendimento gratuito</p>
+    <h2 id="ajuda-t">Onde buscar ajuda em Americana</h2>
+    <div class="help">
+      <div class="place"><h3>Procon Americana</h3><p>Rua Sete de Setembro, 635, Centro</p><p>Telefone: <a href="tel:151">151</a></p><p class="when">Segunda a sexta, das 9h às 16h. Também recebe <a href="https://www.americana.sp.gov.br/portal_procon/site_procon.php?a=reclamacao" target="_blank" rel="noopener">reclamação on-line<span class="sr-only"> (abre em nova aba)</span></a>.</p></div>
+      <div class="place"><h3>Juizado Especial Cível de Americana</h3><p>Av. Brasil, 2669, Pq. Residencial Nardini</p><p>Telefone: <a href="tel:+551933092547">(19) 3309-2547</a></p><p class="when">Triagem também na UNISAL: Av. Cillos, 3500, Pq. Novo Mundo, telefone <a href="tel:+551933092515">(19) 3309-2515</a>.</p></div>
+      <div class="place"><h3>Defensoria Pública de SP</h3><p>Agendamento: <a href="tel:08007734340">0800 773 4340</a></p><p class="when">Dias úteis, das 7h às 19h. Para renda familiar de até 3 salários mínimos. Também dá para <a href="https://www.defensoria.sp.def.br/atendimento/agende-seu-atendimento" target="_blank" rel="noopener">agendar pela internet<span class="sr-only"> (abre em nova aba)</span></a>.</p></div>
+      <div class="place"><h3>Reclamação on-line</h3><p><a href="https://www.consumidor.gov.br" target="_blank" rel="noopener">consumidor.gov.br<span class="sr-only"> (abre em nova aba)</span></a></p><p class="when">Plataforma pública e gratuita do governo federal. A empresa responde pelo próprio site.</p></div>
+    </div>
+    <p class="ref">Endereços e telefones conferidos em 22/10/2026 nos sites oficiais da Prefeitura de Americana, do TJSP e da Defensoria Pública de SP.</p>
+  </section>
+
   <section id="dinheiro" aria-labelledby="din-t">
     <p class="eyebrow">Quando cabe dinheiro de volta</p>
     <h2 id="din-t">Indenização e devolução</h2>
@@ -311,20 +334,29 @@ Peço a exclusão do meu nome dos cadastros de inadimplentes, nos termos do Cód
   </section>
 
   <details>
-    <summary>Base legal usada nesta cartilha</summary>
-    <ul class="law">
-      <li><b>CDC (Lei 8.078/90)</b>: arts. 6º, VI e VIII; 42; 42-A; 43, caput e §§ 1º, 2º, 3º e 5º; 71; 101, I. <a href="https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm" target="_blank" rel="noopener">Texto no Planalto<span class="sr-only"> (abre em nova aba)</span></a></li>
-      <li><b>Código Civil (Lei 10.406/02)</b>: arts. 191, 202, VI, e 206, § 5º, I. <a href="https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm" target="_blank" rel="noopener">Texto no Planalto<span class="sr-only"> (abre em nova aba)</span></a></li>
-      <li><b>Lei 9.099/95 (Juizados Especiais)</b>: arts. 3º, I, 9º e 54. <a href="https://www.planalto.gov.br/ccivil_03/leis/l9099.htm" target="_blank" rel="noopener">Texto no Planalto<span class="sr-only"> (abre em nova aba)</span></a></li>
-      <li><b>Súmulas do STJ</b>: 323, 359, 385, 404 e 548.</li>
-      <li><b>STJ</b>: REsp 2.095.414/SP, 4ª Turma, rel. Min. Antonio Carlos Ferreira, j. 11/06/2024 (prazo de 5 anos contado do dia seguinte ao vencimento). <a href="https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2024/08072024-Informativo-destaca-prazo-de-manutencao-de-dados-de-devedor-em-cadastro-de-inadimplentes.aspx" target="_blank" rel="noopener">Notícia do STJ<span class="sr-only"> (abre em nova aba)</span></a></li>
-      <li><b>STJ</b>: REsp 2.088.100/SP, 3ª Turma, rel. Min. Nancy Andrighi, j. 17/10/2023. <a href="https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2024/30082024-Prescricao-da-divida-impede-cobranca--mas-nao-inclusao-do-devedor-em-plataforma-de-negociacao-de-debito.aspx" target="_blank" rel="noopener">Notícia do STJ de 30/08/2024<span class="sr-only"> (abre em nova aba)</span></a></li>
+    <summary>Base legal e referências (ABNT)</summary>
+    <ul class="refs">
+      <li>BRASIL. Lei nº 8.078, de 11 de setembro de 1990. Dispõe sobre a proteção do consumidor e dá outras providências. Brasília, DF: Presidência da República, 1990. Disponível em: <a href="https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm" target="_blank" rel="noopener">https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm<span class="sr-only"> (abre em nova aba)</span></a>. Acesso em: 22 out. 2026.</li>
+      <li>BRASIL. Lei nº 9.099, de 26 de setembro de 1995. Dispõe sobre os Juizados Especiais Cíveis e Criminais e dá outras providências. Brasília, DF: Presidência da República, 1995. Disponível em: <a href="https://www.planalto.gov.br/ccivil_03/leis/l9099.htm" target="_blank" rel="noopener">https://www.planalto.gov.br/ccivil_03/leis/l9099.htm<span class="sr-only"> (abre em nova aba)</span></a>. Acesso em: 22 out. 2026.</li>
+      <li>BRASIL. Lei nº 10.406, de 10 de janeiro de 2002. Institui o Código Civil. Brasília, DF: Presidência da República, 2002. Disponível em: <a href="https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm" target="_blank" rel="noopener">https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm<span class="sr-only"> (abre em nova aba)</span></a>. Acesso em: 22 out. 2026.</li>
+      <li>BRASIL. Superior Tribunal de Justiça. Súmulas nº 323, 359, 385, 404 e 548. Brasília, DF: Superior Tribunal de Justiça, [2005-2015].</li>
+      <li>BRASIL. Superior Tribunal de Justiça (3. Turma). Recurso Especial nº 2.088.100/SP. Relatora: Min. Nancy Andrighi, 17 out. 2023. Disponível em: <a href="https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2024/30082024-Prescricao-da-divida-impede-cobranca--mas-nao-inclusao-do-devedor-em-plataforma-de-negociacao-de-debito.aspx" target="_blank" rel="noopener">notícia do STJ<span class="sr-only"> (abre em nova aba)</span></a>. Acesso em: 22 out. 2026.</li>
+      <li>BRASIL. Superior Tribunal de Justiça (4. Turma). Recurso Especial nº 2.095.414/SP. Relator: Min. Antonio Carlos Ferreira, 11 jun. 2024. Disponível em: <a href="https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2024/08072024-Informativo-destaca-prazo-de-manutencao-de-dados-de-devedor-em-cadastro-de-inadimplentes.aspx" target="_blank" rel="noopener">notícia do STJ<span class="sr-only"> (abre em nova aba)</span></a>. Acesso em: 22 out. 2026.</li>
     </ul>
   </details>
 
   <footer>
-    <p><strong style="color:var(--ink)">Integra FAM 2026</strong> · Campanha de Esclarecimento Jurídico ao Cidadão, feita por alunos do curso de Direito da Faculdade de Americana (FAM).</p>
-    <p>Material informativo. Não substitui a orientação de um advogado ou da Defensoria Pública para o seu caso.</p>
+    <div class="foot-block">
+      <h2>Quem fez</h2>
+      <p>Grupo 06 · Extensão VII · Curso de Direito da Faculdade de Americana (FAM) · Integra FAM 2026.</p>
+      <p>Giovanna da Silva Francisco, Júlia de Araújo Valenzuela, Maria Clara Fuzzi Capovila, Maria Eduarda Bortolosso, Maria Eduarda Schadeck Batista, Maria Helena Danilow e Murilo Escarpinete Gesualdo.</p>
+      <p>Professor responsável: Prof. Matheus Fernando de Arruda e Silva.</p>
+      <p><strong style="color:var(--ink)">Última atualização: 22/10/2026.</strong></p>
+    </div>
+    <div class="foot-block">
+      <h2>Aviso importante</h2>
+      <p>Material de caráter educativo e informativo. Não substitui a consulta a advogado ou à Defensoria Pública, e o grupo não presta consultoria jurídica individual.</p>
+    </div>
     <div class="selo" role="group" aria-labelledby="selo-t">
       <span class="selo-t" id="selo-t">Acessibilidade verificada</span>
       <ul>
@@ -334,6 +366,15 @@ Peço a exclusão do meu nome dos cadastros de inadimplentes, nos termos do Cód
         <li>Última verificação: 22/10/2026</li>
       </ul>
       <a href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fmurilodannis123-lang.github.io%2Fcartilha-negativacao-g06%2F" target="_blank" rel="noopener">Refazer o teste agora<span class="sr-only"> (abre em nova aba)</span></a>
+    </div>
+    <div class="foot-block">
+      <h2>Privacidade</h2>
+      <p>Este site não pede nenhum dado pessoal, não usa cookies e não tem ferramentas de rastreamento. As preferências de acessibilidade (tamanho do texto e contraste) ficam salvas só no seu aparelho. O site é hospedado no GitHub Pages, que pode registrar dados técnicos de acesso, como o endereço IP, conforme a política do GitHub.</p>
+    </div>
+    <div class="foot-block">
+      <h2>Créditos</h2>
+      <p>Conteúdo elaborado pelo grupo com apoio de ferramenta de inteligência artificial (Claude, da Anthropic). As leis e decisões citadas foram conferidas nas fontes oficiais listadas nas referências.</p>
+      <p>Fontes tipográficas: Archivo, Atkinson Hyperlegible (criada pelo Braille Institute para leitores com baixa visão) e IBM Plex Mono, sob a licença <a href="https://github.com/murilodannis123-lang/cartilha-negativacao-g06/tree/main/fonts" target="_blank" rel="noopener">SIL Open Font License 1.1<span class="sr-only"> (abre em nova aba)</span></a>.</p>
     </div>
   </footer>
 </main>

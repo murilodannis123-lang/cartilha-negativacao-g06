@@ -1,5 +1,5 @@
 // Guarda a cartilha no celular depois da primeira visita, para abrir sem internet.
-const CACHE='cartilha-g06-v3';
+const CACHE='cartilha-g06-v4';
 const FILES=['./','index.html','manifest.webmanifest','fonts/archivo.woff2','fonts/atkinson-400.woff2','fonts/atkinson-400-italic.woff2','fonts/atkinson-700.woff2','fonts/plex-mono-400.woff2','fonts/plex-mono-500.woff2'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
